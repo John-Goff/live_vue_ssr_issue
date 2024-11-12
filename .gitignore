@@ -27,6 +27,7 @@ live_vue_ssr_issue-*.tar
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
+/priv/vue/
 
 # Ignore digested assets cache.
 /priv/static/cache_manifest.json
