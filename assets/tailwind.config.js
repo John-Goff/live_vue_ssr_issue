@@ -8,6 +8,8 @@ const path = require("path")
 module.exports = {
   content: [
     "./js/**/*.js",
+    "./vue/**/*.vue",
+    "../lib/**/*.vue",
     "../lib/live_vue_ssr_issue_web.ex",
     "../lib/live_vue_ssr_issue_web/**/*.*ex"
   ],

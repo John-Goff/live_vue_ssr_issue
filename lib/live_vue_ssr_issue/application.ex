@@ -10,7 +10,8 @@ defmodule LiveVueSsrIssue.Application do
     children = [
       LiveVueSsrIssueWeb.Telemetry,
       LiveVueSsrIssue.Repo,
-      {DNSCluster, query: Application.get_env(:live_vue_ssr_issue, :dns_cluster_query) || :ignore},
+      {DNSCluster,
+       query: Application.get_env(:live_vue_ssr_issue, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: LiveVueSsrIssue.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: LiveVueSsrIssue.Finch},
@@ -19,6 +20,13 @@ defmodule LiveVueSsrIssue.Application do
       # Start to serve requests, typically the last entry
       LiveVueSsrIssueWeb.Endpoint
     ]
+
+    children =
+      if Application.get_env(:live_vue, :ssr_module) == LiveVue.SSR.NodeJS do
+        children ++ [{NodeJS.Supervisor, [path: LiveVue.SSR.NodeJS.server_path(), pool_size: 4]}]
+      else
+        children
+      end
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

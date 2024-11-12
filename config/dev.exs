@@ -25,8 +25,7 @@ config :live_vue_ssr_issue, LiveVueSsrIssueWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "SigwoyOzGo0nwbhmdl7wS3Nm6P6lieCoX4QhqFz1F5DNjTzRgjL2Fy9BJ4JWiV6/",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:live_vue_ssr_issue, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:live_vue_ssr_issue, ~w(--watch)]}
+    npm: ["--silent", "run", "dev", cd: Path.expand("../assets", __DIR__)]
   ]
 
 # ## SSL Support
@@ -83,3 +82,9 @@ config :phoenix_live_view,
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+config :live_vue,
+  vite_host: "http://localhost:5173",
+  ssr_module: LiveVue.SSR.ViteJS,
+  # if you want to disable SSR by default, make it false
+  ssr: true
