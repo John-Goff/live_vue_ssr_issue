@@ -2,7 +2,9 @@ defmodule LiveVueSsrIssueWeb.ErrorJSONTest do
   use LiveVueSsrIssueWeb.ConnCase, async: true
 
   test "renders 404" do
-    assert LiveVueSsrIssueWeb.ErrorJSON.render("404.json", %{}) == %{errors: %{detail: "Not Found"}}
+    assert LiveVueSsrIssueWeb.ErrorJSON.render("404.json", %{}) == %{
+             errors: %{detail: "Not Found"}
+           }
   end
 
   test "renders 500" do

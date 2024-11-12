@@ -1,5 +1,6 @@
 <.header>
   Listing Posts
+  <.vue count={@count} v-component="Counter" v-socket={@socket} v-on:inc={JS.push("inc")} />
   <:actions>
     <.link patch={~p"/posts/new"}>
       <.button>New Post</.button>

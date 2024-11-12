@@ -6,7 +6,7 @@ defmodule LiveVueSsrIssueWeb.PostLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :posts, Blog.list_posts())}
+    {:ok, socket |> assign(:count, 0) |> stream(:posts, Blog.list_posts())}
   end
 
   @impl true
@@ -43,5 +43,10 @@ defmodule LiveVueSsrIssueWeb.PostLive.Index do
     {:ok, _} = Blog.delete_post(post)
 
     {:noreply, stream_delete(socket, :posts, post)}
+  end
+
+  def handle_event("inc", params, socket) do
+    dbg(params)
+    {:noreply, assign(socket, :count, socket.assigns.count + 1)}
   end
 end
