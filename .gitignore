@@ -35,3 +35,11 @@ live_vue_ssr_issue-*.tar
 npm-debug.log
 /assets/node_modules/
 
+#Yarn related config
+/assets/.pnp.*
+/assets/.yarn/*
+!/assets/.yarn/patches
+!/assets/.yarn/plugins
+!/assets/.yarn/releases
+!/assets/.yarn/sdks
+!/assets/.yarn/versions

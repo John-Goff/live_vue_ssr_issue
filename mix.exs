@@ -73,11 +73,11 @@ defmodule LiveVueSsrIssue.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.setup": ["cmd --cd assets npm install"],
-      "assets.build": ["cmd --cd assets npm run build", "cmd --cd assets npm run build-server"],
+      "assets.setup": ["cmd --cd assets yarn install"],
+      "assets.build": ["cmd --cd assets yarn build", "cmd --cd assets yarn build-server"],
       "assets.deploy": [
-        "cmd --cd assets npm run build",
-        "cmd --cd assets npm run build-server",
+        "cmd --cd assets yarn build",
+        "cmd --cd assets yarn build-server",
         "phx.digest"
       ]
     ]

@@ -25,7 +25,7 @@ config :live_vue_ssr_issue, LiveVueSsrIssueWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "SigwoyOzGo0nwbhmdl7wS3Nm6P6lieCoX4QhqFz1F5DNjTzRgjL2Fy9BJ4JWiV6/",
   watchers: [
-    npm: ["--silent", "run", "dev", cd: Path.expand("../assets", __DIR__)]
+    yarn: ["dev", cd: Path.expand("../assets", __DIR__)]
   ]
 
 # ## SSL Support
